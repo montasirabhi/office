@@ -1,36 +1,45 @@
-# Neumorphism Login Form UI (MSKS)
+# Login – MSKS (Neumorphism UI)
 
-A modern and clean **Neumorphism-style Login Form UI** created using **HTML5 and CSS3**.  
-This design is suitable for office management software, admin panels, and internal systems.
+Login flow for the MSKS Office System: **Login**, **Forgot Password**, **OTP**, and **Reset Password**. All pages are PHP and share the same Neumorphism style. Forms post to the **login-backend** PHP scripts.
 
-## ✨ Features
+---
 
-- Soft **Neumorphism (Soft UI)** design
-- Minimal & professional look
-- Font Awesome icons
-- Google Font (Poppins)
-- Responsive & centered layout
-- No JavaScript required
-- Easy to integrate with backend
+## Features
 
-## 🛠 Technologies Used
+- **Neumorphism (Soft UI)** – Same look on every login page  
+- **Font Awesome** icons, **Google Font** (Poppins)  
+- **PHP backend** – login.php, forgot.php, otp.php, reset.php in `login-backend/`  
+- **Flash messages** – Error/success/info after redirects  
+- **Session** – Login and reset flow use PHP sessions  
 
-- HTML5  
-- CSS3  
-- Google Fonts  
-- Font Awesome 5  
+---
 
-## 📁 Project Structure
+## Login folder structure
 
-office/Login
-│
-├── index.html
-├── style.css
-└── README.md
+```
+office/Login/
+├── login.php      # Login form → ../login-backend/login.php
+├── forgot.php     # Forgot form → ../login-backend/forgot.php
+├── otp.php        # OTP form → ../login-backend/otp.php
+├── reset.php      # Reset form → ../login-backend/reset.php
+└── login.css      # Shared styles (+ flash message styles)
+```
 
+---
 
-## 🚀 How to Run
+## Page flow
 
-1. Download or clone this repository
-2. Make sure `login.html` and `login.css` are in the same folder
-3. Open `login.html` in any modern browser
+| Page            | File        | Form action                  | Links                          |
+|-----------------|------------|------------------------------|--------------------------------|
+| Login           | login.php  | login-backend/login.php      | Forgot Password? → forgot.php  |
+| Forgot Password | forgot.php | login-backend/forgot.php     | Back to Login → login.php      |
+| OTP             | otp.php    | login-backend/otp.php        | Resend → forgot.php, Back → login.php |
+| Reset Password  | reset.php  | login-backend/reset.php      | Back to Login → login.php      |
+
+---
+
+## How to run
+
+1. Configure the database (run `database/schema.sql`) and `login-backend/config/config.php`.  
+2. Serve the project with PHP.  
+3. Open `Login/login.php` and use “Forgot Password?” to go through Forgot → OTP → Reset → Login.
